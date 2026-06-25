@@ -5,35 +5,31 @@ import { profile } from "@/lib/data";
 
 export default function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-5xl scroll-mt-24 px-6 py-24">
+    <section id="contact" className="scroll-mt-24 py-16">
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/[0.02] p-10 text-center backdrop-blur-sm sm:p-16"
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="rounded-xl border border-border bg-muted/40 p-8 text-center sm:p-12"
       >
-        <p className="mb-2 text-sm font-medium uppercase tracking-[0.2em] text-accent">
-          Get in touch
-        </p>
-        <h2 className="text-3xl font-bold text-white sm:text-4xl">
+        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
           Let&apos;s build something reliable.
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-slate-300">
+        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
           Open to roles in systems / network engineering, IT infrastructure, and
           full-stack software. The fastest way to reach me is email.
         </p>
-
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
           <a
             href={`mailto:${profile.email}`}
-            className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-ink transition-transform hover:scale-105"
+            className="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
             {profile.email}
           </a>
           <a
             href={`tel:${profile.phone.replace(/[^0-9]/g, "")}`}
-            className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-accent hover:text-accent"
+            className="rounded-md border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:bg-accent"
           >
             {profile.phone}
           </a>

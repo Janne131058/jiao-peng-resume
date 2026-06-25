@@ -6,32 +6,25 @@ import { skillGroups } from "@/lib/data";
 
 export default function About() {
   return (
-    <Section id="about" eyebrow="About" title="Skills & Expertise">
-      <div className="mb-10 max-w-3xl text-lg leading-relaxed text-slate-300">
-        Engineer spanning IT infrastructure, networking, security, and full-stack
-        software development. I build and run secure, compliant systems end to
-        end — from multi-site networks and cloud infrastructure to automation
-        scripts and web applications.
-      </div>
-
-      <div className="grid gap-6 sm:grid-cols-2">
+    <Section id="skills" title="Skills">
+      <div className="space-y-5">
         {skillGroups.map((group, i) => (
           <motion.div
             key={group.label}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-colors hover:border-accent/40"
+            transition={{ duration: 0.45, delay: i * 0.05 }}
+            className="grid gap-2 sm:grid-cols-[180px_1fr] sm:gap-6"
           >
-            <h3 className="mb-4 text-lg font-semibold text-white">
+            <h3 className="text-sm font-semibold text-foreground">
               {group.label}
             </h3>
             <div className="flex flex-wrap gap-2">
               {group.items.map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-white/10 bg-ink-soft px-3 py-1 text-sm text-slate-300"
+                  className="rounded-md border border-border bg-muted px-2.5 py-1 text-xs text-foreground/80"
                 >
                   {item}
                 </span>
