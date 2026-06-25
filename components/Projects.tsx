@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Section from "./Section";
+import DetailsDisclosure from "./DetailsDisclosure";
 import { projects } from "@/lib/data";
 
 export default function Projects() {
@@ -22,17 +23,25 @@ export default function Projects() {
                 {project.period}
               </span>
             </div>
-            <ul className="mt-2 space-y-1.5">
-              {project.bullets.map((b, bi) => (
-                <li
-                  key={bi}
-                  className="flex gap-2.5 text-[14px] leading-relaxed text-foreground/75"
-                >
-                  <span className="mt-[9px] h-[3px] w-[3px] flex-shrink-0 rounded-full bg-muted-foreground" />
-                  {b}
-                </li>
-              ))}
-            </ul>
+            {/* First bullet shown as an always-visible summary line */}
+            <p className="mt-0.5 text-[15px] leading-relaxed text-muted-foreground">
+              {project.bullets[0]}
+            </p>
+            {project.bullets.length > 1 && (
+              <DetailsDisclosure>
+                <ul className="space-y-1.5">
+                  {project.bullets.slice(1).map((b, bi) => (
+                    <li
+                      key={bi}
+                      className="flex gap-2.5 text-[14px] leading-relaxed text-foreground/75"
+                    >
+                      <span className="mt-[9px] h-[3px] w-[3px] flex-shrink-0 rounded-full bg-muted-foreground" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </DetailsDisclosure>
+            )}
           </motion.article>
         ))}
       </div>

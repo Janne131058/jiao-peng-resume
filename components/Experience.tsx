@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Section from "./Section";
+import DetailsDisclosure from "./DetailsDisclosure";
 import { experiences } from "@/lib/data";
 
 export default function Experience() {
@@ -25,17 +26,19 @@ export default function Experience() {
             <p className="mt-0.5 text-[15px] text-muted-foreground">
               {exp.role} · {exp.location}
             </p>
-            <ul className="mt-3 space-y-1.5">
-              {exp.bullets.map((b, bi) => (
-                <li
-                  key={bi}
-                  className="flex gap-2.5 text-[14px] leading-relaxed text-foreground/75"
-                >
-                  <span className="mt-[9px] h-[3px] w-[3px] flex-shrink-0 rounded-full bg-muted-foreground" />
-                  {b}
-                </li>
-              ))}
-            </ul>
+            <DetailsDisclosure>
+              <ul className="space-y-1.5">
+                {exp.bullets.map((b, bi) => (
+                  <li
+                    key={bi}
+                    className="flex gap-2.5 text-[14px] leading-relaxed text-foreground/75"
+                  >
+                    <span className="mt-[9px] h-[3px] w-[3px] flex-shrink-0 rounded-full bg-muted-foreground" />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </DetailsDisclosure>
           </motion.article>
         ))}
       </div>
