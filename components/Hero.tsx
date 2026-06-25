@@ -22,7 +22,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="text-center font-serif text-4xl text-foreground sm:text-5xl"
+        className="text-center font-serif text-[34px] leading-tight text-foreground"
       >
         {profile.name}
       </motion.h1>

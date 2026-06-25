@@ -7,7 +7,7 @@ import { education } from "@/lib/data";
 export default function Education() {
   return (
     <Section id="education" title="Education">
-      <div className="space-y-6">
+      <div className="space-y-5">
         {education.map((edu, i) => (
           <motion.div
             key={edu.school}

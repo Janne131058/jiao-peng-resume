@@ -8,7 +8,7 @@ import { projects } from "@/lib/data";
 export default function Projects() {
   return (
     <Section id="projects" title="Projects">
-      <div className="space-y-7">
+      <div className="space-y-6">
         {projects.map((project, i) => (
           <motion.article
             key={project.name}

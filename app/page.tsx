@@ -20,7 +20,7 @@ export default function Home() {
       <CustomCursor />
       <EntryScreen />
       <DownloadButton />
-      <main id="main" className="mx-auto max-w-3xl px-6 py-20 sm:py-24">
+      <main id="main" className="mx-auto max-w-3xl px-6 py-14">
         <Hero />
         <Experience />
         <Education />
