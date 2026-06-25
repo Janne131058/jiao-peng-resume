@@ -5,9 +5,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { profile } from "@/lib/data";
 
 /**
- * Full-screen white intro overlay: a hand-written signature draws itself in
- * (stroke draw + ink fill) then a bordered arrow button to enter — mirroring
- * lawted.tech/resume. Clicking the arrow fades the overlay away.
+ * Full-screen white intro overlay: the name animates in with a Cybertruck-style
+ * angular type (Chakra Petch), then a bordered arrow button to enter. Clicking
+ * the arrow fades the overlay away to reveal the resume.
  */
 export default function EntryScreen() {
   const [entered, setEntered] = useState(false);
@@ -20,34 +20,23 @@ export default function EntryScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-6 bg-background"
+          className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-9 bg-background"
         >
-          <svg
-            viewBox="0 0 640 220"
-            className="h-auto w-[300px] sm:w-[400px]"
-            aria-label={profile.name}
-            role="img"
+          <motion.div
+            initial={{ opacity: 0, y: 14, letterSpacing: "0.6em" }}
+            animate={{ opacity: 1, y: 0, letterSpacing: "0.18em" }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-cyber text-4xl font-bold uppercase text-foreground sm:text-6xl"
           >
-            <text
-              x="320"
-              y="150"
-              textAnchor="middle"
-              className="signature-path font-signature"
-              fontSize="170"
-              fill="hsl(var(--foreground))"
-              stroke="hsl(var(--foreground))"
-              strokeWidth="1"
-            >
-              {profile.name}
-            </text>
-          </svg>
+            {profile.name}
+          </motion.div>
 
           <motion.button
             onClick={() => setEntered(true)}
             aria-label="Enter resume"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 2.3 }}
+            transition={{ duration: 0.5, delay: 1.1 }}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.94 }}
             className="flex h-11 w-11 items-center justify-center rounded-md border-2 border-foreground text-foreground"

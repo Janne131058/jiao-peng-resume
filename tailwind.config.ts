@@ -42,7 +42,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         serif: ["var(--font-serif)", "Georgia", "serif"],
-        signature: ["var(--font-signature)", "cursive"],
+        cyber: ["var(--font-cyber)", "sans-serif"],
       },
     },
   },

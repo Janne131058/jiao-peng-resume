@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Playfair_Display, Sacramento } from "next/font/google";
+import { Montserrat, Playfair_Display, Chakra_Petch } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/lib/data";
 
@@ -13,10 +13,10 @@ const playfair = Playfair_Display({
   variable: "--font-serif",
   weight: ["400", "500", "600"],
 });
-const sacramento = Sacramento({
+const chakraPetch = Chakra_Petch({
   subsets: ["latin"],
-  variable: "--font-signature",
-  weight: ["400"],
+  variable: "--font-cyber",
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${playfair.variable} ${sacramento.variable}`}
+      className={`${montserrat.variable} ${playfair.variable} ${chakraPetch.variable}`}
     >
       <body className="font-sans antialiased">{children}</body>
     </html>
