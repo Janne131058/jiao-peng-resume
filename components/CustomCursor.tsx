@@ -3,22 +3,22 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Desktop custom cursor — a single soft gray blob that eases toward the pointer
- * and grows over interactive elements, matching lawted.tech. Disabled on touch
- * devices and when the user prefers reduced motion.
+ * Desktop custom cursor — a 20px translucent gray rounded square that eases
+ * toward the pointer and grows over interactive elements, matching
+ * lawted.tech (rgba(140,140,140,0.2), 5px radius). Disabled on touch devices.
  */
 export default function CustomCursor() {
-  const blobRef = useRef<HTMLDivElement>(null);
+  const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fine = window.matchMedia("(pointer: fine)").matches;
     const wide = window.matchMedia("(min-width: 768px)").matches;
-    const blob = blobRef.current;
-    // Touch / small screens: leave the blob hidden and use the native cursor.
-    if (!fine || !wide || !blob) return;
+    const box = boxRef.current;
+    if (!fine || !wide || !box) return;
 
     document.documentElement.classList.add("cursor-none-host");
-    blob.style.opacity = "0.55";
+    box.style.opacity = "1";
+
     const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const pos = { ...mouse };
     let raf = 0;
@@ -31,21 +31,21 @@ export default function CustomCursor() {
       const interactive = !!el.closest("a, button, [data-cursor-hover]");
       if (interactive !== hovering) {
         hovering = interactive;
-        blob.style.width = hovering ? "44px" : "18px";
-        blob.style.height = hovering ? "44px" : "18px";
-        blob.style.opacity = hovering ? "0.35" : "0.55";
+        box.style.width = hovering ? "40px" : "20px";
+        box.style.height = hovering ? "40px" : "20px";
+        box.style.borderRadius = hovering ? "8px" : "5px";
       }
     };
 
     const loop = () => {
-      pos.x += (mouse.x - pos.x) * 0.2;
-      pos.y += (mouse.y - pos.y) * 0.2;
-      blob.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0) translate(-50%, -50%)`;
+      pos.x += (mouse.x - pos.x) * 0.18;
+      pos.y += (mouse.y - pos.y) * 0.18;
+      box.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0) translate(-50%, -50%)`;
       raf = requestAnimationFrame(loop);
     };
 
-    const onLeave = () => (blob.style.opacity = "0");
-    const onEnter = () => (blob.style.opacity = hovering ? "0.35" : "0.55");
+    const onLeave = () => (box.style.opacity = "0");
+    const onEnter = () => (box.style.opacity = "1");
 
     window.addEventListener("mousemove", onMove);
     document.addEventListener("mouseleave", onLeave);
@@ -63,10 +63,10 @@ export default function CustomCursor() {
 
   return (
     <div
-      ref={blobRef}
+      ref={boxRef}
       aria-hidden
-      style={{ opacity: 0 }}
-      className="no-print pointer-events-none fixed left-0 top-0 z-[9999] hidden h-[18px] w-[18px] rounded-full bg-neutral-400 transition-[width,height,opacity] duration-300 ease-out md:block"
+      style={{ opacity: 0, backgroundColor: "rgba(140, 140, 140, 0.2)" }}
+      className="no-print pointer-events-none fixed left-0 top-0 z-[9999] hidden h-5 w-5 rounded-[5px] transition-[width,height,border-radius] duration-200 ease-out md:block"
     />
   );
 }

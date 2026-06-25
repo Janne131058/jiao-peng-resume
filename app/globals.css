@@ -49,3 +49,30 @@ body {
     display: none !important;
   }
 }
+
+/* Hand-drawn signature: stroke draws itself, then inks in */
+.signature-path {
+  stroke-dasharray: 2900;
+  stroke-dashoffset: 2900;
+  fill-opacity: 0;
+  animation:
+    sig-draw 2.2s ease forwards,
+    sig-fill 0.6s ease 1.9s forwards;
+}
+@keyframes sig-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes sig-fill {
+  to {
+    fill-opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .signature-path {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+    animation: none;
+  }
+}
