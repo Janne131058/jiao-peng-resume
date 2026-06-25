@@ -7,31 +7,28 @@ import { projects } from "@/lib/data";
 export default function Projects() {
   return (
     <Section id="projects" title="Projects">
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="space-y-7">
         {projects.map((project, i) => (
           <motion.article
             key={project.name}
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.45, delay: i * 0.04 }}
-            className="group flex flex-col rounded-lg border border-border bg-card p-5 transition-all hover:border-foreground/30"
           >
-            <div className="mb-2 flex items-start justify-between gap-3">
-              <h3 className="text-sm font-semibold leading-snug">
-                {project.name}
-              </h3>
-              <span className="whitespace-nowrap text-xs font-medium tabular-nums text-muted-foreground">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+              <h3 className="text-xl text-foreground">{project.name}</h3>
+              <span className="text-[15px] text-muted-foreground">
                 {project.period}
               </span>
             </div>
-            <ul className="space-y-1.5">
+            <ul className="mt-2 space-y-1.5">
               {project.bullets.map((b, bi) => (
                 <li
                   key={bi}
-                  className="flex gap-2.5 text-sm leading-relaxed text-foreground/80"
+                  className="flex gap-2.5 text-[14px] leading-relaxed text-foreground/75"
                 >
-                  <span className="mt-[7px] h-1 w-1 flex-shrink-0 rounded-full bg-foreground/40" />
+                  <span className="mt-[9px] h-[3px] w-[3px] flex-shrink-0 rounded-full bg-muted-foreground" />
                   {b}
                 </li>
               ))}

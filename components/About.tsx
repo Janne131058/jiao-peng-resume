@@ -13,18 +13,17 @@ export default function About() {
             key={group.label}
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.45, delay: i * 0.05 }}
-            className="grid gap-2 sm:grid-cols-[180px_1fr] sm:gap-6"
           >
-            <h3 className="text-sm font-semibold text-foreground">
+            <p className="mb-2 text-[15px] text-muted-foreground">
               {group.label}
-            </h3>
+            </p>
             <div className="flex flex-wrap gap-2">
               {group.items.map((item) => (
                 <span
                   key={item}
-                  className="rounded-md border border-border bg-muted px-2.5 py-1 text-xs text-foreground/80"
+                  className="rounded-md bg-neutral-100 px-2.5 py-[3px] text-xs text-neutral-900"
                 >
                   {item}
                 </span>
