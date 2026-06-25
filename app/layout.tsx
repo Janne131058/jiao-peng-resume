@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Montserrat, Playfair_Display, Chakra_Petch } from "next/font/google";
+import { Montserrat, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { profile } from "@/lib/data";
 
@@ -13,10 +14,11 @@ const playfair = Playfair_Display({
   variable: "--font-serif",
   weight: ["400", "500", "600"],
 });
-const chakraPetch = Chakra_Petch({
-  subsets: ["latin"],
+// Cybertruck Regular — free font based on the Cybertruck logo (famfonts.com)
+const cybertruck = localFont({
+  src: "./fonts/Cybertruck-Regular.ttf",
   variable: "--font-cyber",
-  weight: ["500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -37,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${playfair.variable} ${chakraPetch.variable}`}
+      className={`${montserrat.variable} ${playfair.variable} ${cybertruck.variable}`}
     >
       <body className="font-sans antialiased">{children}</body>
     </html>
