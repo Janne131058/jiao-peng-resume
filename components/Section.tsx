@@ -17,7 +17,7 @@ export default function Section({ id, title, children }: SectionProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="mb-4 font-serif text-2xl text-foreground"
+        className="mb-4 text-xl font-semibold tracking-tight text-foreground"
       >
         {title}
       </motion.h2>

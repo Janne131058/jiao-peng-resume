@@ -40,9 +40,7 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Georgia", "serif"],
-        signature: ["var(--font-signature)", "cursive"],
+        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
       },
     },
   },
